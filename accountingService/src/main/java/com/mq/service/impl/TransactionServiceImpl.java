@@ -3,7 +3,7 @@ package com.mq.service.impl;
 import com.mq.accounting.model.PaginatedTransaction;
 import com.mq.accounting.model.PaginatedTransactionPageable;
 import com.mq.dto.TransactionDTO;
-import com.mq.persistance.repository.TransactionRepository;
+import com.mq.persistence.repository.TransactionRepository;
 import com.mq.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

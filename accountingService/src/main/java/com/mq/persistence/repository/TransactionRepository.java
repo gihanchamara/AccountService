@@ -1,4 +1,4 @@
-package com.mq.persistance.repository;
+package com.mq.persistence.repository;
 
 import com.mq.dto.TransactionDTO;
 import org.springframework.data.domain.Page;

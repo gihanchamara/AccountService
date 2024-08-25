@@ -1,4 +1,4 @@
-package com.mq.persistance.repository;
+package com.mq.persistence.repository;
 
 import com.mq.dto.AccountDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
