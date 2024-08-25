@@ -47,13 +47,6 @@ This project is an Accounting Service API that manages user accounts and transac
    ```
    This will start the application with the `dev` profile.
 
-## API Documentation
-
-The API is documented using OpenAPI (Swagger). Once the application is running, you can access the API documentation at:
-
-```
-http://localhost:8080/swagger-ui.html
-```
 
 ## Sample GET Request
 
@@ -62,8 +55,9 @@ Here's an example of how to make a GET request to list accounts for a user:
 ```
 GET http://localhost:8080/v1/accounting/accounts?userId=123
 ```
-
-This request will return an array of Account objects for the user with ID 123.
+Dev credentials
+   username = user
+   password = user
 
 ## Database Scripts
 

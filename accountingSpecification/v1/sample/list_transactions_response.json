@@ -1,0 +1,30 @@
+{
+  "content": [
+    {
+      "transactionId": 3,
+      "srcAccountId": 3,
+      "destAccountId": 4,
+      "transactionDateTime": "2024-08-26T09:15:00Z",
+      "currencyCode": "EUR",
+      "isDebit": true,
+      "amountInCents": 7500,
+      "memo": "Online purchase"
+    },
+    {
+      "transactionId": 5,
+      "srcAccountId": 3,
+      "destAccountId": 6,
+      "transactionDateTime": "2024-08-28T16:00:00Z",
+      "currencyCode": "GBP",
+      "isDebit": true,
+      "amountInCents": 2500,
+      "memo": "Utility bill payment"
+    }
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 10
+  },
+  "totalPages": 1,
+  "totalElements": 2
+}

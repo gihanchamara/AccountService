@@ -1,0 +1,20 @@
+[
+  {
+    "accountId": 2,
+    "userId": 2,
+    "accountName": "Savings Account",
+    "accountType": "Savings",
+    "balanceDateTime": "2024-01-01T00:00:00Z",
+    "currencyCode": "EUR",
+    "balance": 1500
+  },
+  {
+    "accountId": 5,
+    "userId": 2,
+    "accountName": "Savings Account",
+    "accountType": "Savings",
+    "balanceDateTime": "2024-01-01T00:00:00Z",
+    "currencyCode": "EUR",
+    "balance": 1500
+  }
+]
