@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "array",
+      "items": {
+        "$ref": "transaction.json"
+      }
+    },
+    "pageable": {
+      "type": "object",
+      "properties": {
+        "pageNumber": {
+          "type": "integer",
+          "example": 0
+        },
+        "pageSize": {
+          "type": "integer",
+          "example": 20
+        }
+      }
+    },
+    "totalPages": {
+      "type": "integer",
+      "example": 5
+    },
+    "totalElements": {
+      "type": "integer",
+      "example": 100
+    }
+  }
+}

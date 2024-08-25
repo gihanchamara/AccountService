@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "properties": {
+    "transactionId": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1
+    },
+    "srcAccountId": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1
+    },
+    "destAccountId": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1
+    },
+    "transactionDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2024-08-24T14:15:22Z"
+    },
+    "currencyCode": {
+      "type": "string",
+      "example": "SGD"
+    },
+    "isDebit": {
+      "type": "boolean",
+      "example": false
+    },
+    "amountInCents": {
+      "type": "integer",
+      "format": "int64",
+      "example": 954098
+    },
+    "memo": {
+      "type": "string",
+      "example": "Salary"
+    }
+  }
+}

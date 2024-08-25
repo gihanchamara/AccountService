@@ -1,0 +1,105 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Transaction Service API",
+    "description": "API for managing account transactions",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/v1/accounting",
+      "description": "Local server"
+    }
+  ],
+  "paths": {
+    "/accounts/{accountId}/transactions": {
+      "get": {
+        "summary": "Get transactions for an account",
+        "description": "Returns a paginated list of transactions for the specified account.",
+        "operationId": "getTransactions",
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "The ID of the account"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Page number of the results"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 20
+            },
+            "description": "Number of results per page"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "transactionDateTime,desc"
+            },
+            "description": "Sorting criteria in the format: property,(asc|desc). Default is transactionDateTime,desc"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of transactions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedTransactionResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Transaction": {
+        "$ref": "transaction.json"
+      },
+      "PaginatedTransactionResponse": {
+        "$ref": "paginated_transaction.json"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"i
+      }
+    }
+  }
+}

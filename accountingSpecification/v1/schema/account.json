@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "properties": {
+    "accountId": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1
+    },
+    "userId": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1
+    },
+    "accountName": {
+      "type": "string",
+      "example": "Current Account"
+    },
+    "accountType": {
+      "type": "string",
+      "example": "Savings"
+    },
+    "balanceDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2024-08-24T10:30:00Z"
+    },
+    "currencyCode": {
+      "type": "string",
+      "example": "SGD"
+    },
+    "balance": {
+      "type": "integer",
+      "format": "int64",
+      "example": 954098
+    }
+  }
+}
