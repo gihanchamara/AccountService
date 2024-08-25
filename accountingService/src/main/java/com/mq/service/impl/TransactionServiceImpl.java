@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -20,6 +21,8 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private TransactionRepository transactionRepository;
 
+    @Transactional(readOnly = true)
+    @Override
     public PaginatedTransaction getTransactions(Long accountId, Integer page, Integer size, String sort) {
         //TODO : introduce sortable fields as enum and simplify the logic
         Pageable pageable = PageRequest.of(page, size, parseSort(sort));

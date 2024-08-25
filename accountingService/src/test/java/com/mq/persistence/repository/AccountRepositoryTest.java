@@ -3,15 +3,16 @@ package com.mq.persistence.repository;
 import com.mq.dto.AccountDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-@ActiveProfiles("test")
+@DataJpaTest
 class AccountRepositoryTest {
 
     @Autowired
@@ -20,7 +21,7 @@ class AccountRepositoryTest {
     @Test
     void getAccountsByUserId() {
         List<AccountDTO> accounts = accountRepository.getAccountsByUserId(1L);
-        assertEquals(1, accounts.size());
+        assertEquals(2, accounts.size());
     }
 
     @Test
