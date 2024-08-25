@@ -64,6 +64,7 @@
                                 <interfaceOnly>true</interfaceOnly>
                                 <useBeanValidation>true</useBeanValidation>
                                 <useSpringBoot3>true</useSpringBoot3>
+                                <useTags>true</useTags>
                             </configOptions>
                             <typeMappings>
                                 <typeMapping>integer:int64=Long</typeMapping>

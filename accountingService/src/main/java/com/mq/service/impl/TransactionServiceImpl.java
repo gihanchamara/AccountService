@@ -1,7 +1,7 @@
 package com.mq.service.impl;
 
-import com.mq.accounting.model.PaginatedTransactionResponse;
-import com.mq.accounting.model.PaginatedTransactionResponsePageable;
+import com.mq.accounting.model.PaginatedTransaction;
+import com.mq.accounting.model.PaginatedTransactionPageable;
 import com.mq.dto.TransactionDTO;
 import com.mq.persistance.repository.TransactionRepository;
 import com.mq.service.TransactionService;
@@ -18,32 +18,33 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private TransactionRepository transactionRepository;
 
-    public PaginatedTransactionResponse getTransactions(Long accountId, Integer page, Integer size, String sort) {
+    public PaginatedTransaction getTransactions(Long accountId, Integer page, Integer size, String sort) {
         Sort.Direction direction = Sort.Direction.ASC;
         String property = "transactionDateTime";
 
         if (sort != null && !sort.isEmpty()) {
-            String[] parts = sort.split(",");
-            direction = parts[0].equalsIgnoreCase("desc") ? Sort.Direction.DESC : Sort.Direction.ASC;
-            if (parts.length > 1) {
-                property = parts[1];
+            if (sort.equalsIgnoreCase("desc")) {
+                direction = Sort.Direction.DESC;
+            } else if (!sort.equalsIgnoreCase("asc")) {
+                // If it's not "asc" or "desc", assume it's a property name
+                property = sort;
             }
         }
 
         Pageable pageable = PageRequest.of(page, size, Sort.by(direction, property));
-        Page<TransactionDTO> transactionPage = transactionRepository.findBySrcAccountIdOrDestAccountId(accountId, accountId, pageable);
+        Page<TransactionDTO> transactionPage = transactionRepository.findBySrcAccountId(accountId, pageable);
 
-        PaginatedTransactionResponse response = new PaginatedTransactionResponse();
-        response.setContent(transactionPage.getContent().stream()
+        PaginatedTransaction paginatedTransaction = new PaginatedTransaction();
+        paginatedTransaction.content(transactionPage.getContent().stream()
                 .map(TransactionDTO::toTransaction).toList());
 
-        PaginatedTransactionResponsePageable responsePageable = new PaginatedTransactionResponsePageable();
-        responsePageable.setPageNumber(transactionPage.getNumber());
-        responsePageable.setPageSize(transactionPage.getSize());
-        response.setPageable(responsePageable);
+        PaginatedTransactionPageable transactionPageable = new PaginatedTransactionPageable();
+        transactionPageable.setPageNumber(transactionPage.getNumber());
+        transactionPageable.setPageSize(transactionPage.getSize());
+        paginatedTransaction.setPageable(transactionPageable);
 
-        response.setTotalPages(transactionPage.getTotalPages());
-        response.setTotalElements((int) transactionPage.getTotalElements());
-        return response;
+        paginatedTransaction.setTotalPages(transactionPage.getTotalPages());
+        paginatedTransaction.setTotalElements((int) transactionPage.getTotalElements());
+        return paginatedTransaction;
     }
 }

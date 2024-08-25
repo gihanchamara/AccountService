@@ -1,0 +1,45 @@
+{
+  "accounts": {
+    "get": {
+      "summary": "Get accounts for a user",
+      "description": "Returns a list of accounts belongs to the user.",
+      "operationId": "getAccounts",
+      "tags": ["Account"],
+      "parameters": [
+        {
+          "name": "userId",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": "The ID of the user"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A list of accounts",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "accounting_service.json#/components/schemas/Account"
+                }
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "Unauthorized"
+        }
+      },
+      "security": [
+        {
+          "bearerAuth": []
+        }
+      ]
+    }
+  }
+}

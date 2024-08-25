@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<TransactionDTO, Long> {
-    Page<TransactionDTO> findBySrcAccountIdOrDestAccountId(Long srcAccountId, Long destAccountId, Pageable pageable);
+    Page<TransactionDTO> findBySrcAccountId(Long srcAccountId, Pageable pageable);
 }
