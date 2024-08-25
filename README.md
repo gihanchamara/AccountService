@@ -37,11 +37,12 @@ This project is an Accounting Service API that manages user accounts and transac
 1. Ensure you have Java 17+ and Maven installed on your system.
 2. Clone the repository to your local machine.
 3. Navigate to the project root directory.
-4. Run the following command to build the project:
+5. Set up a database and update connection parameters in Dev/Prod property files 
+6. Run the following command to build the project:
    ```
    mvn clean install
    ```
-5. To run the application, use:
+7. To run the application, use in accountingService:
    ```
    mvn spring-boot:run -Dspring-boot.run.profiles=dev
    ```
@@ -49,15 +50,21 @@ This project is an Accounting Service API that manages user accounts and transac
 
 
 ## Sample GET Request
+Dev credentials
+- username = user
+- password = user
 
-Here's an example of how to make a GET request to list accounts for a user:
+Here's an example GET request to list accounts for a user:
 
 ```
 GET http://localhost:8080/v1/accounting/accounts?userId=123
 ```
-Dev credentials
-   username = user
-   password = user
+
+Here's an example GET request to list of transaction on given account
+
+```
+http://localhost:8080/v1/accounting/account/3/transactions?page=0&size=10&sort=transactionDateTime,desc
+```
 
 ## Database Scripts
 
