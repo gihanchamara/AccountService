@@ -2,6 +2,7 @@ package com.mq.dto;
 
 import com.mq.accounting.model.Account;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.time.OffsetDateTime;
 @Table(name = "account")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class AccountDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
